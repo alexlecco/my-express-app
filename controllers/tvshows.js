@@ -23,7 +23,7 @@ exports.findById = function(req, res) {
 //POST - Insert a new TVShow in the DB
 exports.addTVShow = function(req, res) {
 	console.log('POST');
-	console.log(req.body);
+	console.log("req.body::::", req.body);
 
 	var tvshow = new TVShow({
 		title:    req.body.title,
@@ -34,6 +34,8 @@ exports.addTVShow = function(req, res) {
 		genre:    req.body.genre,
 		summary:  req.body.summary
 	});
+
+	console.log('tvshow::::', tvshow);
 
 	tvshow.save(function(err, tvshow) {
 		if(err) return res.send(500, err.message);
@@ -64,7 +66,7 @@ exports.deleteTVShow = function(req, res) {
 	TVShow.findById(req.params.id, function(err, tvshow) {
 		tvshow.remove(function(err) {
 			if(err) return res.send(500, err.message);
-      res.status(200);
+      	res.status(200);
 		})
 	});
 };
