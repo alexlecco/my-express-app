@@ -35,18 +35,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
-var router = express.Router();
-
-router.get('/', function(req, res) {
+tvshows.get('/', function(req, res) {
    res.send("Hello World!");
 });
 
-router.get('/tvshows', function(req, res) {
+tvshows.get('/tvshows', function(req, res) {
   console.log("tvshows::::::::", tvshows)
   res.json(tvshows)
 });
 
-app.use(router);
+app.use(tvshows);
 
 server.listen(3001, function() {
   console.log("Node server running on http://localhost:3001");
